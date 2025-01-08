@@ -63,23 +63,23 @@ blueprint:
 triggers:
   - trigger: conversation
     command:
-      - "(spiele) [(das|die|der) ](album|platte|zusammenstellung|single|playlist) {media_name} [von [dem ](künstler|band|gruppe) {artist}] (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
+      - "(Spiele) [(das|die|der) ](album|platte|zusammenstellung|single|playlist) {media_name} [von [dem ](künstler|band|gruppe) {artist}] (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
     id: album
   - trigger: conversation
     command:
-      - "(spiele) [(den|das|die) ](track|lied|song) {media_name} [von [dem ](künstler|band|gruppe) {artist}] (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
+      - "(Spiele) [(den|das|die) ](track|lied|song) {media_name} [von [dem ](künstler|band|gruppe) {artist}] (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
     id: track
   - trigger: conversation
     command:
-      - "(spiele) [(den|die|das) ](künstler|band|gruppe) {media_name} (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
+      - "(Spiele) [(den|die|das) ](künstler|band|gruppe) {media_name} (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
     id: artist
   - trigger: conversation
     command:
-      - "(spiele) [(den|das) ]((radiosender)|(radio)|(sender)) {media_name} (in|auf|mit) [dem ]{area_or_player_name}"
+      - "(Spiele) [(den|das) ]((radiosender)|(radio)|(sender)) {media_name} (in|auf|mit) [dem ]{area_or_player_name}"
     id: radio
   - trigger: conversation
     command:
-      - "(spiele) [die ]playlist {media_name} (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
+      - "(Spiele) [die ]playlist {media_name} (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
     id: playlist
 conditions: []
 actions:
