@@ -1,9 +1,9 @@
 blueprint:
   domain: automation
-  name: Music Assistant - Voice (Official)
-  source_url: https://github.com/music-assistant/blueprints/blob/main/music_assistant_blueprint.yaml
+  name: Music Assistant - Voice DE
+  source_url: https://github.com/wendevlin/music-assistant-blueprints-de/blob/main/music_assistant_blueprint.yaml
   description: '
-    ![Image](https://github.com/music-assistant/blueprints/blob/main/assets/music-assistant.png?raw=true)
+    ![Image](https://github.com/wendevlin/music-assistant-blueprints-de/blob/main/assets/music-assistant.png?raw=true)
   
     # Play media using voice commands
   
@@ -11,13 +11,13 @@ blueprint:
 
     All sentences must:
     
-    * start with the words `Play` or `Listen to` followed by the item type `artist/track/album/playlist/radio station` and then the name of the item
+    * beginnen mit den Worten `Spiele`, gefolgt von dem Elementtyp `Künstler/Track/Album/Playlist/Radio` und dann dem Namen des Elements
     
-    * for album and track be optionally followed by `by (the) artist` and then the artist name
+    * für Album und Track optional gefolgt von `von artist` und dann dem Künstlernamen
     
-    * then be optionally followed by an area name or device name
+    * dann optional gefolgt von einem Bereichsnamen oder Gerätenamen
 
-    * then, for artist, track, album or playlist, be optionally followed by the phrase `using radio mode`
+    * dann, für Künstler, Track, Album oder Playlist, optional gefolgt von dem Satz `mit radio Modus`
     
     #### Acceptable variations
 
@@ -26,28 +26,27 @@ blueprint:
     #### Examples
 
     ```
+    Spiele den Künstler Pink Floyd in der Küche
     
-    Play the artist Pink Floyd in the kitchen
+    Spiele das Album Jagged Little Pill im Arbeitszimmer
     
-    Listen to album Jagged Little Pill in the study
+    Spiele das Album Greatest Hits vom Künstler James Taylor in der Küche
     
-    Listen to the album Greatest Hits by the artist James Taylor in the kitchen
+    Spiele den Track New Years Day im Schlafzimmer
     
-    Play track New Years Day in the bedroom
+    Spiele den Track New Years Day im Schlafzimmer im Radiomodus
     
-    Play track New Years Day in the bedroom using radio mode
+    Spiele das Lied A Hard Days Night von Billy Joel im Schlafzimmer
     
-    Play the song A Hard Days Night by Billy Joel in the bedroom
+    Spiele die Playlist Classic Rock im Arbeitszimmer
     
-    Listen to the playlist Classic Rock in the study
-    
-    Listen to the radio station BBC Radio 1 in the bedroom
+    Spiele den Radiosender BBC Radio 1 im Schlafzimmer
 
-    Play the album Classical Nights on the Bedroom Sonos Speaker
+    Spiele das Album Classical Nights auf dem Schlafzimmer Sonos Lautsprecher
     
-    Listen to the record Classical Nights on the Bedroom Sonos Speaker
+    Spiele die Platte Classical Nights auf dem Schlafzimmer Sonos Lautsprecher
 
-    Play the band U2
+    Spiele die Band U2
     
     ```
   '
@@ -64,23 +63,23 @@ blueprint:
 triggers:
   - trigger: conversation
     command:
-      - "(play|listen to) [the ](album|ep|record|compilation|single) {media_name} [by [the ](artist|band|group) {artist}] (in|on|using) [the ]{area_or_player_name}[ (with|using) {radio_mode}]"
+      - "(spiele) [(das|die|der) ](album|platte|zusammenstellung|single|playlist) {media_name} [von [dem ](künstler|band|gruppe) {artist}] (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
     id: album
   - trigger: conversation
     command:
-      - "(play|listen to) [the ](track|song) {media_name} [by [the ](artist|band|group) {artist}] (in|on|using) [the ]{area_or_player_name}[ (with|using) {radio_mode}]"
+      - "(spiele) [(den|das|die) ](track|lied|song) {media_name} [von [dem ](künstler|band|gruppe) {artist}] (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
     id: track
   - trigger: conversation
     command:
-      - "(play|listen to) [the ](artist|band|group) {media_name} (in|on|using) [the ]{area_or_player_name}[ (with|using) {radio_mode}]"
+      - "(spiele) [(den|die|das) ](künstler|band|gruppe) {media_name} (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
     id: artist
   - trigger: conversation
     command:
-      - "(play|listen to) [the ]((radio station)|(radio)|(station)) {media_name} (in|on|using) [the ]{area_or_player_name}"
+      - "(spiele) [(den|das) ]((radiosender)|(radio)|(sender)) {media_name} (in|auf|mit) [dem ]{area_or_player_name}"
     id: radio
   - trigger: conversation
     command:
-      - "(play|listen to) [the ]playlist {media_name} (in|on|using) [the ]{area_or_player_name}[ (with|using) {radio_mode}]"
+      - "(spiele) [die ]playlist {media_name} (in|auf|mit) [dem ]{area_or_player_name}[ (mit) {radio_mode}]"
     id: playlist
 conditions: []
 actions:
@@ -188,5 +187,5 @@ actions:
               radio_mode: "{{ radio_mode }}"
             target:
               entity_id: "{{ mass_player_entity_id }}"
-  - set_conversation_response: "{{ trigger.slots.media_name }} playing on {{ mass_player_name }}"
+  - set_conversation_response: "{{ trigger.slots.media_name }} spielt auf {{ mass_player_name }}"
 mode: single
